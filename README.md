@@ -10,6 +10,7 @@ Thành viên: Nguyễn Quốc Huy (nhóm trưởng), Nguyễn Minh Khoa, Nguyễ
 Các thành viên đều thuộc lớp 64KTPM2, Trường Đại học Thủy Lợi.
 
 Nền tảng cài đặt: desktop 
+
 Ngôn ngữ lập trình: C++
 
 Phần mềm giúp người dùng tính và kiểm soát calories hàng ngày của họ thông qua BMI cá nhân.
