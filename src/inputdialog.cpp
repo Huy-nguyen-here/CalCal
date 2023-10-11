@@ -1,7 +1,8 @@
 #include "include/inputdialog.h"
 #include "ui_inputdialog.h"
+#include "include/databasemanager.h"
+#include "include/mainwindow.h"
 #include <QMessageBox>
-#include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QDebug>
 #include <QSqlError>
@@ -12,8 +13,7 @@ InputDialog::InputDialog(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    mydb=QSqlDatabase::addDatabase("QSQLITE");
-    mydb.setDatabaseName("F:/Project/Software Engineering/CalCal/data/CalCaldb.db");
+    QSqlDatabase& mydb = DatabaseManager::getDatabase();
 
     if (!mydb.open())
         ui->dbstatus->setText("Can't connect!");
@@ -34,6 +34,7 @@ InputDialog::~InputDialog()
 
 void InputDialog::onSaveButtonClicked()
 {
+
     QString name = ui->nameLineEdit->text();
     int age = ui->agespinBox->value();
     int height = ui->heightspinBox->value();
@@ -89,13 +90,7 @@ recommendation = "Với thể trạng hiện tại, chúng tôi kiến nghị b�
 
 
 // Lưu thông tin vào cơ sở dữ liệu
-
-if (!mydb.isOpen()){
-qDebug()<<"Khong the mo CSDL.";
-return;
-}
-
-QSqlQuery query;
+QSqlQuery query(mydb);
 query.prepare("INSERT INTO NGUOIDUNG (name, age, height, weight, gender, bmi, body_type, recommendation) "
               "VALUES (:name, :age, :height, :weight, :gender, :bmi, :body_type, :recommendation)");
 query.bindValue(":name", name);
@@ -113,10 +108,8 @@ if (!query.exec()) {
     return;
 }
 else {
-    this->hide();
-     // Hiển thị giao diện PersonalInfo khi lưu thành công
-    PersonalInfo personalinfo;
-    personalinfo.setModal(true);
-    personalinfo.exec();
+    emit saveButtonClicked(); // Kích hoạt tín hiệu saveButtonClicked
+    close();
 }
 }
+

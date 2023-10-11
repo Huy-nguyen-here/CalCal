@@ -9,13 +9,21 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    src/inputdialog.cpp \
+    src/databasemanager.cpp \
+    src/mainwindow.cpp \
     src/main.cpp \
-    src/personalinfo.cpp
+    src/inputdialog.cpp \
+    src/personalinfo.cpp \
+    src/food_calo_in.cpp \
+    src/foodtab.cpp
 
 HEADERS += \
+    include/databasemanager.h \
+    include/mainwindow.h \
     include/inputdialog.h \
-    include/personalinfo.h
+    include/personalinfo.h \
+    include/food_calo_in.h \
+    include/foodtab.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -23,8 +31,11 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 FORMS += \
+    forms/mainwindow.ui \
     forms/inputdialog.ui \
-    forms/personalinfo.ui
+    forms/personalinfo.ui \
+    forms/food_calo_in.ui \
+    forms/foodtab.ui
 
 DISTFILES += \
     data/CalCaldb.db

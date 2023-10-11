@@ -3,8 +3,6 @@
 
 #include <QDialog>
 #include <QtSql>
-#include <QDebug>
-#include <QFileInfo>
 #include <include/personalinfo.h>
 
 namespace Ui {
