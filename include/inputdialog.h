@@ -3,9 +3,6 @@
 
 #include <QDialog>
 #include <QtSql>
-#include <QDebug>
-#include <QFileInfo>
-#include <include/personalinfo.h>
 
 namespace Ui {
 class InputDialog;
@@ -18,6 +15,9 @@ class InputDialog : public QDialog
 public:
     explicit InputDialog(QWidget *parent = nullptr);
     ~InputDialog();
+
+signals:
+    void saveButtonClicked(); // Tín hiệu khi người dùng nhấn nút "Lưu"
 
 private slots:
     void onSaveButtonClicked();

@@ -1,6 +1,7 @@
 #include "include/personalinfo.h"
 #include "ui_personalinfo.h"
 #include "include/inputdialog.h"
+#include "include/databasemanager.h"
 
 PersonalInfo::PersonalInfo(QWidget *parent) :
     QDialog(parent),
@@ -8,14 +9,7 @@ PersonalInfo::PersonalInfo(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    ui->tabWidget->setTabText(0, "Tôi");
-    ui->tabWidget->setTabText(1, "Thực phẩm");
-    ui->tabWidget->setTabText(2, "Bài tập");
-    ui->tabWidget->setTabText(3, "Báo cáo");
-
-
-    mydb=QSqlDatabase::addDatabase("QSQLITE");
-    mydb.setDatabaseName("F:/Project/Software Engineering/CalCal/CalCaldb.db");
+    QSqlDatabase& mydb = DatabaseManager::getDatabase();
 
     if (!mydb.open())
         ui->dbstatus->setText("Can't connect!");
@@ -73,7 +67,8 @@ void PersonalInfo::setRecommendation(const QString& recommendation)
 
 void PersonalInfo::updatePersonalInfoFromDatabase()
 {
-    QSqlQuery query;
+    QSqlDatabase& mydb = DatabaseManager::getDatabase();
+    QSqlQuery query(mydb);
     query.prepare("SELECT name, age, height, weight, gender, bmi, body_type, recommendation FROM NGUOIDUNG ORDER BY ROWID DESC LIMIT 1");
 
     if (query.exec() && query.next()) {
