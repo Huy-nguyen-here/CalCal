@@ -3,6 +3,7 @@
 #include "include/databasemanager.h"
 #include "include/personalinfo.h" // Thêm tên file header của lớp giao diện "PersonalInfo"
 #include "include/foodtab.h" // Thêm tên file header của lớp giao diện "FoodTab"
+#include "include/btaptab.h"
 #include <QTabWidget>
 #include <QMainWindow>
 #include <QWidget>
@@ -16,10 +17,12 @@ MainWindow::MainWindow(QWidget *parent)
     // Tạo các đối tượng personalinfo và foodtab
     personalInfo = new PersonalInfo(this);
     foodTab = new FoodTab(this);
+    btaptab = new btapTab(this);
 
     // Thêm personalinfo và foodtab vào tabWidget
     ui->tabWidget->addTab(personalInfo, "Tôi");
     ui->tabWidget->addTab(foodTab, "Thực phẩm");
+    ui->tabWidget->addTab(btaptab, "Bài tập");
 
     // Hiển thị tab 1 (personalinfo) mặc định
     ui->tabWidget->setCurrentIndex(0);
