@@ -6,89 +6,111 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>547</width>
-    <height>356</height>
+    <width>697</width>
+    <height>482</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QTableWidget" name="tableWidget">
+  <widget class="QFrame" name="frame">
    <property name="geometry">
     <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>541</width>
-     <height>291</height>
+     <x>50</x>
+     <y>10</y>
+     <width>561</width>
+     <height>331</height>
     </rect>
    </property>
-   <property name="tabletTracking">
-    <bool>false</bool>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
    </property>
-   <property name="sizeAdjustPolicy">
-    <enum>QAbstractScrollArea::AdjustToContents</enum>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
    </property>
-   <column>
+   <widget class="QPushButton" name="detailButton">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>260</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
     <property name="text">
-     <string>Mã bài tập</string>
+     <string>Chi tiết</string>
     </property>
-    <property name="font">
-     <font>
-      <bold>true</bold>
-     </font>
+   </widget>
+   <widget class="QLabel" name="calolabel">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>260</y>
+      <width>291</width>
+      <height>21</height>
+     </rect>
     </property>
-   </column>
-   <column>
     <property name="text">
-     <string>Bài tập</string>
+     <string>CALO TIÊU THỤ:</string>
     </property>
-    <property name="font">
-     <font>
-      <bold>true</bold>
-     </font>
+   </widget>
+   <widget class="QTableWidget" name="tableWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>401</width>
+      <height>261</height>
+     </rect>
     </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>Lượng calories/60 phút</string>
+    <property name="tabletTracking">
+     <bool>false</bool>
     </property>
-    <property name="font">
-     <font>
-      <bold>true</bold>
-     </font>
+    <property name="sizeAdjustPolicy">
+     <enum>QAbstractScrollArea::AdjustToContents</enum>
     </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>Add</string>
-    </property>
-   </column>
-  </widget>
-  <widget class="QLabel" name="calolabel">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>305</y>
-     <width>391</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>CALO TIÊU THỤ:</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="detailButton">
-   <property name="geometry">
-    <rect>
-     <x>430</x>
-     <y>300</y>
-     <width>111</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Chi tiết</string>
-   </property>
+    <attribute name="horizontalHeaderCascadingSectionResizes">
+     <bool>true</bool>
+    </attribute>
+    <attribute name="verticalHeaderVisible">
+     <bool>false</bool>
+    </attribute>
+    <column>
+     <property name="text">
+      <string>Mã bài tập</string>
+     </property>
+     <property name="font">
+      <font>
+       <bold>true</bold>
+      </font>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Bài tập</string>
+     </property>
+     <property name="font">
+      <font>
+       <bold>true</bold>
+      </font>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Calories/60p</string>
+     </property>
+     <property name="font">
+      <font>
+       <bold>true</bold>
+      </font>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Add</string>
+     </property>
+    </column>
+   </widget>
   </widget>
  </widget>
  <resources/>
