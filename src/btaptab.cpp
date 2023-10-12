@@ -68,7 +68,7 @@ void btapTab::buttonAdd_clicked()
         float caloriesPer60 = ui->tableWidget->item(row, 2)->text().toFloat();
 
         // Tính toán số calo thực tế
-        float caloriesout = (time / 60) * caloriesPer60;
+        float caloriesout = (time / 60.0) * caloriesPer60;
 
         // Thêm dữ liệu vào bảng CALO_IN
         QString currentDate = QDate::currentDate().toString("yyyy-MM-dd");
