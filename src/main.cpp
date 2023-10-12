@@ -3,7 +3,7 @@
 #include "include/inputdialog.h"
 #include "include/databasemanager.h"
 #include <QSqlError>
-
+#include <QSqlQuery>
 
 
 int main(int argc, char *argv[])
@@ -22,22 +22,30 @@ int main(int argc, char *argv[])
     // Kiểm tra bảng NGUOIDUNG
     QSqlQuery query(mydb);
     query.exec("SELECT COUNT(*) FROM NGUOIDUNG");
-    if (query.next() && query.value(0).toInt() == 0) {
+    query.next();
+    int count = query.value(0).toInt();
+    if (count == 0) {
         InputDialog inputDialog;
+
+        // Tạo con trỏ MainWindow
+        MainWindow* mainWindow = new MainWindow;
+
         // Kết nối tín hiệu saveButtonClicked của inputDialog tới một khe cắm (slot)
         QObject::connect(&inputDialog, &InputDialog::saveButtonClicked, [&]() {
-            // Mở mainwindow
-            MainWindow mainWindow;
-            mainWindow.show();
+
+            // Đóng inputDialog
+            inputDialog.close();
+
+            // Hiển thị MainWindow
+            mainWindow->show();
         });
 
         inputDialog.exec(); // Hiển thị inputdialog
     } else {
-*/
         // Bảng NGUOIDUNG có dữ liệu, mở MainWindow
+*/
         MainWindow mainWindow;
         mainWindow.show();
-//    }
 
     // Chạy vòng lặp sự kiện chính
     return app.exec();

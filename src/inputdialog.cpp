@@ -63,53 +63,54 @@ void InputDialog::onSaveButtonClicked()
     }
 
 
-// Lượng calories khuyến nghị
-int minCalories = 0;
-int maxCalories = 0;
-if (gender == "Nam") {
-    minCalories = 66 + (13.75 * weight) + (5 * height) - (6.75 * age);
-    maxCalories = minCalories + 500;
-} else {
-    minCalories = 655 + (9.56 * weight) + (1.85 * height) - (4.68 * age);
-    maxCalories = minCalories + 500;
+    // Lượng calories khuyến nghị
+    int minCalories = 0;
+    int maxCalories = 0;
+    if (gender == "Nam") {
+        minCalories = 66 + (13.75 * weight) + (5 * height) - (6.75 * age);
+        maxCalories = minCalories + 500;
+    } else {
+        minCalories = 655 + (9.56 * weight) + (1.85 * height) - (4.68 * age);
+        maxCalories = minCalories + 500;
+    }
+
+    QString calorieRecommendation = QString("Lượng calories tối thiểu bạn nên nạp hàng ngày là %1. "
+                                            "Lượng calories tối đa nên ít hơn %2. ")
+                                        .arg(minCalories).arg(maxCalories);
+
+    // Khuyến cáo
+    QString recommendation;
+    if (bodyType == "Gầy") {
+        recommendation = "Với thể trạng hiện tại, chúng tôi kiến nghị bạn nên tăng cân. " + calorieRecommendation;
+    } else if (bodyType == "Bình thường") {
+        recommendation = "Với thể trạng hiện tại, chúng tôi kiến nghị bạn nên duy trì cân nặng. " + calorieRecommendation;
+    } else {
+        recommendation = "Với thể trạng hiện tại, chúng tôi kiến nghị bạn nên giảm cân. "+ calorieRecommendation;
+    }
+
+
+    // Lưu thông tin vào cơ sở dữ liệu
+    QSqlDatabase& mydb = DatabaseManager::getDatabase();
+    QSqlQuery query(mydb);
+    query.prepare("INSERT INTO NGUOIDUNG (name, age, height, weight, gender, bmi, body_type, recommendation) "
+                  "VALUES (:name, :age, :height, :weight, :gender, :bmi, :body_type, :recommendation)");
+    query.bindValue(":name", name);
+    query.bindValue(":age", age);
+    query.bindValue(":height", height);
+    query.bindValue(":weight", weight);
+    query.bindValue(":gender", gender);
+    query.bindValue(":bmi", bmi);
+    query.bindValue(":body_type", bodyType);
+    query.bindValue(":recommendation", recommendation);
+
+
+    if (!query.exec()) {
+        QMessageBox::warning(this, "Lỗi", "Không thể thêm người dùng vào cơ sở dữ liệu.");
+        qDebug() << "Khong the chay truy van." << query.lastError();
+        return;
+    }
+    else {
+        emit saveButtonClicked(); // Kích hoạt tín hiệu saveButtonClicked
+        close();
+    }
 }
-
-QString calorieRecommendation = QString("Lượng calories tối thiểu bạn nên nạp hàng ngày là %1. "
-                                        "Lượng calories tối đa nên ít hơn %2. ")
-                                    .arg(minCalories).arg(maxCalories);
-
-// Khuyến cáo
-QString recommendation;
-if (bodyType == "Gầy") {
-    recommendation = "Với thể trạng hiện tại, chúng tôi kiến nghị bạn nên tăng cân. " + calorieRecommendation;
-} else if (bodyType == "Bình thường") {
-recommendation = "Với thể trạng hiện tại, chúng tôi kiến nghị bạn nên duy trì cân nặng. " + calorieRecommendation;
-} else {
-recommendation = "Với thể trạng hiện tại, chúng tôi kiến nghị bạn nên giảm cân. "+ calorieRecommendation;
-}
-
-
-// Lưu thông tin vào cơ sở dữ liệu
-QSqlQuery query(mydb);
-query.prepare("INSERT INTO NGUOIDUNG (name, age, height, weight, gender, bmi, body_type, recommendation) "
-              "VALUES (:name, :age, :height, :weight, :gender, :bmi, :body_type, :recommendation)");
-query.bindValue(":name", name);
-query.bindValue(":age", age);
-query.bindValue(":height", height);
-query.bindValue(":weight", weight);
-query.bindValue(":gender", gender);
-query.bindValue(":bmi", bmi);
-query.bindValue(":body_type", bodyType);
-query.bindValue(":recommendation", recommendation);
-
-
-if (!query.exec()) {
-    qDebug() << "Khong the chay truy van." << query.lastError();
-    return;
-}
-else {
-    emit saveButtonClicked(); // Kích hoạt tín hiệu saveButtonClicked
-    close();
-}
-}
-

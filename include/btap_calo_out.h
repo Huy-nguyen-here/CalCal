@@ -1,20 +1,20 @@
-#ifndef FOOD_CALO_IN_H
-#define FOOD_CALO_IN_H
+#ifndef BTAP_CALO_OUT_H
+#define BTAP_CALO_OUT_H
 
 #include <QDialog>
 #include <QtSql>
 
 namespace Ui {
-class food_calo_in;
+class btap_calo_out;
 }
 
-class food_calo_in : public QDialog
+class btap_calo_out : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit food_calo_in(QWidget *parent = nullptr);
-    ~food_calo_in();
+    explicit btap_calo_out(QWidget *parent = nullptr);
+    ~btap_calo_out();
     void loadCaloFromDatabase();
     void clearTable();
 
@@ -28,8 +28,8 @@ private slots:
 
 
 private:
-    Ui::food_calo_in *ui;
+    Ui::btap_calo_out *ui;
     QSqlDatabase mydb;
 };
 
-#endif // FOOD_CALO_IN_H
+#endif // BTAP_CALO_OUT_H
