@@ -21,10 +21,10 @@ color: rgb(0, 0, 0);</string>
    <widget class="QTabWidget" name="tabWidget">
     <property name="geometry">
      <rect>
-      <x>100</x>
-      <y>50</y>
-      <width>511</width>
-      <height>421</height>
+      <x>70</x>
+      <y>40</y>
+      <width>561</width>
+      <height>451</height>
      </rect>
     </property>
     <property name="currentIndex">
