@@ -16,6 +16,7 @@ public:
     explicit food_calo_in(QWidget *parent = nullptr);
     ~food_calo_in();
     void loadCaloFromDatabase();
+    void clearTable();
 
 signals:
     ////
@@ -23,7 +24,7 @@ signals:
 
 private slots:
     void on_pushButton_clicked();
-    void clearTable();
+
 
 
 private:

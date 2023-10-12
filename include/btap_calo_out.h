@@ -16,6 +16,7 @@ public:
     explicit btap_calo_out(QWidget *parent = nullptr);
     ~btap_calo_out();
     void loadCaloFromDatabase();
+    void clearTable();
 
 signals:
     ////
@@ -23,7 +24,7 @@ signals:
 
 private slots:
     void on_pushButton_clicked();
-    void clearTable();
+
 
 
 private:
