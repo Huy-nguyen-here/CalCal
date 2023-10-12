@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>FoodTab</class>
- <widget class="QDialog" name="FoodTab">
+ <class>btapTab</class>
+ <widget class="QDialog" name="btapTab">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>564</width>
+    <width>547</width>
     <height>356</height>
    </rect>
   </property>
@@ -30,7 +30,7 @@
    </property>
    <column>
     <property name="text">
-     <string>Mã thực phẩm</string>
+     <string>Mã bài tập</string>
     </property>
     <property name="font">
      <font>
@@ -40,7 +40,7 @@
    </column>
    <column>
     <property name="text">
-     <string>Tên thực phẩm</string>
+     <string>Bài tập</string>
     </property>
     <property name="font">
      <font>
@@ -50,17 +50,7 @@
    </column>
    <column>
     <property name="text">
-     <string>Đơn vị tính</string>
-    </property>
-    <property name="font">
-     <font>
-      <bold>true</bold>
-     </font>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>Lượng calories/100 đơn vị</string>
+     <string>Lượng calories/60 phút</string>
     </property>
     <property name="font">
      <font>
@@ -84,7 +74,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>CALO ĐÃ NẠP</string>
+    <string>CALO TIÊU THỤ:</string>
    </property>
   </widget>
   <widget class="QPushButton" name="detailButton">
@@ -97,7 +87,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>CALO ĐÃ NẠP</string>
+    <string>Chi tiết</string>
    </property>
   </widget>
  </widget>

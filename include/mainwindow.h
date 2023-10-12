@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <include/personalinfo.h>
 #include <include/foodtab.h>
+#include <include/btaptab.h>
 
 
 namespace Ui {
@@ -22,6 +23,7 @@ private:
     Ui::MainWindow *ui;
     PersonalInfo *personalInfo; // Đối tượng personalinfo
     FoodTab *foodTab; // Đối tượng foodtab
+    btapTab *btaptab;
 };
 
 #endif // MAINWINDOW_H
