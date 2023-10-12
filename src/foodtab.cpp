@@ -45,6 +45,7 @@ void FoodTab::updateTotalCalories()
 //Sự kiện khi nhấn nút "Chi tiết"
 void FoodTab::on_detailButton_clicked()
 {
+    m_food_calo_in.clearTable();
     ////
     m_food_calo_in.loadCaloFromDatabase();
     // Hiển thị giao diện food_calo_in

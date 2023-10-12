@@ -9,14 +9,13 @@ food_calo_in::food_calo_in(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    loadCaloFromDatabase();
     connect(ui->pushButton, &QPushButton::clicked, this, &food_calo_in::on_pushButton_clicked);
 }
 
 food_calo_in::~food_calo_in()
 {
-    delete ui;
     clearTable();
+    delete ui;
 }
 
 void food_calo_in::on_pushButton_clicked()
@@ -29,7 +28,7 @@ void food_calo_in::on_pushButton_clicked()
 
 void food_calo_in::loadCaloFromDatabase()
 {
-
+    clearTable();
     // Truy vấn cơ sở dữ liệu để lấy dữ liệu thực phẩm
     QSqlQuery query(mydb);
     QString currentDate = QDate::currentDate().toString("yyyy-MM-dd");

@@ -9,14 +9,13 @@ btap_calo_out::btap_calo_out(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    loadCaloFromDatabase();
     connect(ui->pushButton, &QPushButton::clicked, this, &btap_calo_out::on_pushButton_clicked);
 }
 
 btap_calo_out::~btap_calo_out()
 {
-    delete ui;
     clearTable();
+    delete ui;
 }
 
 void btap_calo_out::on_pushButton_clicked()
@@ -29,7 +28,7 @@ void btap_calo_out::on_pushButton_clicked()
 
 void btap_calo_out::loadCaloFromDatabase()
 {
-
+    clearTable();
     // Truy vấn cơ sở dữ liệu để lấy dữ liệu thực phẩm
     QSqlQuery query(mydb);
     QString currentDate = QDate::currentDate().toString("yyyy-MM-dd");

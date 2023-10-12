@@ -46,6 +46,7 @@ void btapTab::updateTotalCalories()
 void btapTab::on_detailButton_clicked()
 {
     ////
+    m_btap_calo_out.clearTable();
     m_btap_calo_out.loadCaloFromDatabase();
     // Hiển thị giao diện food_calo_in
     m_btap_calo_out.setModal(true);
