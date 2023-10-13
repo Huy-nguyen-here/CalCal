@@ -1,0 +1,16 @@
+debug/main.o
+debug/mainwindow.o
+debug/databasemanager.o
+debug/inputdialog.o
+debug/personalinfo.o
+debug/foodtab.o
+debug/food_calo_in.o
+debug/btaptab.o
+debug/btap_calo_out.o
+debug/moc_mainwindow.o
+debug/moc_inputdialog.o
+debug/moc_personalinfo.o
+debug/moc_foodtab.o
+debug/moc_food_calo_in.o
+debug/moc_btap_calo_out.o
+debug/moc_btaptab.o

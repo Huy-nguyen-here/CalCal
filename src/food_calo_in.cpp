@@ -30,6 +30,7 @@ void food_calo_in::loadCaloFromDatabase()
 {
     clearTable();
     // Truy vấn cơ sở dữ liệu để lấy dữ liệu thực phẩm
+    QSqlDatabase mydb = DatabaseManager::getDatabase();
     QSqlQuery query(mydb);
     QString currentDate = QDate::currentDate().toString("yyyy-MM-dd");
     QString queryString = QString("SELECT Ngay, MaTP, So_luong, Calo_thuc_nap FROM CALO_IN WHERE Ngay='%1'").arg(currentDate);

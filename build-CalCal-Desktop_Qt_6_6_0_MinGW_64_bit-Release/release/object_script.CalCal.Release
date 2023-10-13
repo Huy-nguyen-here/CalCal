@@ -1,0 +1,16 @@
+release/main.o
+release/mainwindow.o
+release/databasemanager.o
+release/inputdialog.o
+release/personalinfo.o
+release/foodtab.o
+release/food_calo_in.o
+release/btaptab.o
+release/btap_calo_out.o
+release/moc_mainwindow.o
+release/moc_inputdialog.o
+release/moc_personalinfo.o
+release/moc_foodtab.o
+release/moc_food_calo_in.o
+release/moc_btap_calo_out.o
+release/moc_btaptab.o

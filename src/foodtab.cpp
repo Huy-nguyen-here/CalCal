@@ -71,6 +71,7 @@ void FoodTab::buttonAdd_clicked()
         float caloriesConsumed = (quantity / 100.0) * caloriesPer100;
 
         // Thêm dữ liệu vào bảng CALO_IN
+        QSqlDatabase mydb = DatabaseManager::getDatabase();
         QString currentDate = QDate::currentDate().toString("yyyy-MM-dd");
         QString queryString = "INSERT INTO CALO_IN (Ngay, MaTP, So_luong, Calo_thuc_nap) VALUES (:date, :foodId, :quantity, :calories)";
         QSqlQuery query(mydb);

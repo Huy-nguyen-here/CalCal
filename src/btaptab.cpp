@@ -71,6 +71,7 @@ void btapTab::buttonAdd_clicked()
         float caloriesout = (time / 60.0) * caloriesPer60;
 
         // Thêm dữ liệu vào bảng CALO_IN
+        QSqlDatabase mydb = DatabaseManager::getDatabase();
         QString currentDate = QDate::currentDate().toString("yyyy-MM-dd");
         QString queryString = "INSERT INTO CALO_OUT (Ngay, MaBT, Thoi_gian, Calo_tieu_thu) VALUES (:date, :btapId, :time, :calories)";
         QSqlQuery query(mydb);
