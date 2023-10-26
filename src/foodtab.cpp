@@ -129,3 +129,33 @@ void FoodTab::loadFoodsFromDatabase()
             return;
         }
 }
+
+void FoodTab::on_pushButton_clicked()
+{
+        // Hiển thị hộp thoại yêu cầu nhập thông tin thực phẩm
+        QString foodName = QInputDialog::getText(this, "Nhập thông tin thực phẩm", "Tên thực phẩm:");
+        QString unit = QInputDialog::getText(this, "Nhập thông tin thực phẩm", "Đơn vị tính:");
+        double calo = QInputDialog::getDouble(this, "Nhập thông tin thực phẩm", "Lượng calo mỗi 100 đơn vị:");
+        float calories = calo;
+
+        QSqlDatabase& mydb = DatabaseManager::getDatabase();
+        QSqlQuery query(mydb);
+
+        QString queryString = "INSERT INTO THUCPHAM (TenTP, Don_vi_tinh, Luong_Calo_moi_100donvi) VALUES (:tenThucPham, :donViTinh, :luongCalo)";
+        query.prepare(queryString);
+        query.bindValue(":tenThucPham", foodName);
+        query.bindValue(":donViTinh", unit);
+        query.bindValue(":luongCalo", calories);
+        query.exec();
+
+        // Kiểm tra và hiển thị thông báo thành công hoặc không thành công
+        if (query.lastError().isValid()) {
+            QMessageBox::critical(this, "Lỗi", "Không thể thêm thông tin thực phẩm vào CSDL.");
+        } else {
+            QMessageBox::information(this, "Thành công", "Đã thêm thông tin thực phẩm vào CSDL.");
+        }
+        ui->tableWidget->clearContents();
+        ui->tableWidget->setRowCount(0);
+        loadFoodsFromDatabase();
+}
+

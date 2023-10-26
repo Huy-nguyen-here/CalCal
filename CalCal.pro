@@ -9,6 +9,7 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    src/report.cpp \
     src/btap_calo_out.cpp \
     src/btaptab.cpp \
     src/databasemanager.cpp \
@@ -27,7 +28,8 @@ HEADERS += \
     include/inputdialog.h \
     include/personalinfo.h \
     include/food_calo_in.h \
-    include/foodtab.h
+    include/foodtab.h \
+    include/report.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -41,7 +43,8 @@ FORMS += \
     forms/inputdialog.ui \
     forms/personalinfo.ui \
     forms/food_calo_in.ui \
-    forms/foodtab.ui
+    forms/foodtab.ui \
+    forms/report.ui
 
 DISTFILES += \
     data/CalCaldb.db

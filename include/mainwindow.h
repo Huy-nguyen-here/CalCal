@@ -5,6 +5,7 @@
 #include <include/personalinfo.h>
 #include <include/foodtab.h>
 #include <include/btaptab.h>
+#include <include/report.h>
 
 
 namespace Ui {
@@ -24,6 +25,7 @@ private:
     PersonalInfo *personalInfo; // Đối tượng personalinfo
     FoodTab *foodTab; // Đối tượng foodtab
     btapTab *btaptab;
+    Report *report;
 };
 
 #endif // MAINWINDOW_H

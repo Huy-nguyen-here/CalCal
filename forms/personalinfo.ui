@@ -102,6 +102,13 @@ color: rgb(0, 0, 0);</string>
            </property>
           </widget>
          </item>
+         <item>
+          <widget class="QLabel" name="label_2">
+           <property name="text">
+            <string>Mục tiêu cân nặng:</string>
+           </property>
+          </widget>
+         </item>
         </layout>
        </item>
        <item row="1" column="1">
@@ -150,6 +157,13 @@ color: rgb(0, 0, 0);</string>
          </item>
          <item>
           <widget class="QLabel" name="bodyLabel">
+           <property name="text">
+            <string>TextLabel</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="goalLabel">
            <property name="text">
             <string>TextLabel</string>
            </property>

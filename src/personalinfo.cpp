@@ -60,6 +60,11 @@ void PersonalInfo::setBodyStatus(const QString& bodyStatus)
     ui->bodyLabel->setText(bodyStatus);
 }
 
+void PersonalInfo::setGoal(int Goal)
+{
+    ui->goalLabel->setText(QString::number(Goal));
+}
+
 void PersonalInfo::setRecommendation(const QString& recommendation)
 {
     ui->recommendationLabel->setText(recommendation);
@@ -69,7 +74,7 @@ void PersonalInfo::updatePersonalInfoFromDatabase()
 {
     QSqlDatabase& mydb = DatabaseManager::getDatabase();
     QSqlQuery query(mydb);
-    query.prepare("SELECT name, age, height, weight, gender, bmi, body_type, recommendation FROM NGUOIDUNG ORDER BY ROWID DESC LIMIT 1");
+    query.prepare("SELECT name, age, height, weight, gender, bmi, body_type, recommendation, goal FROM NGUOIDUNG ORDER BY ROWID DESC LIMIT 1");
 
     if (query.exec() && query.next()) {
         QString name = query.value(0).toString();
@@ -80,6 +85,7 @@ void PersonalInfo::updatePersonalInfoFromDatabase()
         float bmi = query.value(5).toFloat();
         QString body_type = query.value(6).toString();
         QString recommendation = query.value(7).toString();
+        int goal = query.value(8).toInt();
 
         setUserName(name);
         setAge(age);
@@ -89,6 +95,7 @@ void PersonalInfo::updatePersonalInfoFromDatabase()
         setBMI(bmi);
         setBodyStatus(body_type);
         setRecommendation(recommendation);
+        setGoal(goal);
     } else {
         ui->dbstatus->setText("Chưa có thông tin hoặc không kết nối được CSDL.");
         // Có thể hiển thị một thông báo hoặc xử lý theo ý của bạn

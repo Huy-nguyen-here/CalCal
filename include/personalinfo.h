@@ -25,6 +25,7 @@ public:
     void setGender(const QString& gender);
     void setBMI(float bmi);
     void setBodyStatus(const QString& bodyStatus);
+    void setGoal(int Goal);
     void setRecommendation(const QString& recommendation);
     void updatePersonalInfoFromDatabase();
 

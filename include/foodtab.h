@@ -24,6 +24,8 @@ private slots:
     void updateTotalCalories();
 
 
+    void on_pushButton_clicked();
+
 private:
     Ui::FoodTab *ui;
     QSqlDatabase mydb;

@@ -21,6 +21,7 @@ InputDialog::InputDialog(QWidget *parent) :
         ui->dbstatus->setText("Connected...");
 
     ui->weightspinBox->setMaximum(999);
+    ui->goalspinBox->setMaximum(999);
     ui->heightspinBox->setMaximum(999);
     ui->agespinBox->setMaximum(999);
 
@@ -39,6 +40,7 @@ void InputDialog::onSaveButtonClicked()
     int age = ui->agespinBox->value();
     int height = ui->heightspinBox->value();
     int weight = ui->weightspinBox->value();
+    int goal = ui->goalspinBox->value();
     QString gender = ui->gendercomboBox->currentText();
 
     if (name.isEmpty() || age == 0 || height == 0 || weight == 0) {
@@ -92,8 +94,8 @@ void InputDialog::onSaveButtonClicked()
     // Lưu thông tin vào cơ sở dữ liệu
     QSqlDatabase& mydb = DatabaseManager::getDatabase();
     QSqlQuery query(mydb);
-    query.prepare("INSERT INTO NGUOIDUNG (name, age, height, weight, gender, bmi, body_type, recommendation) "
-                  "VALUES (:name, :age, :height, :weight, :gender, :bmi, :body_type, :recommendation)");
+    query.prepare("INSERT INTO NGUOIDUNG (name, age, height, weight, gender, bmi, body_type, recommendation, goal) "
+                  "VALUES (:name, :age, :height, :weight, :gender, :bmi, :body_type, :recommendation, :goal)");
     query.bindValue(":name", name);
     query.bindValue(":age", age);
     query.bindValue(":height", height);
@@ -102,6 +104,7 @@ void InputDialog::onSaveButtonClicked()
     query.bindValue(":bmi", bmi);
     query.bindValue(":body_type", bodyType);
     query.bindValue(":recommendation", recommendation);
+    query.bindValue(":goal", goal);
 
 
     if (!query.exec()) {
